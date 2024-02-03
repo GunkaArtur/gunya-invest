@@ -21,8 +21,8 @@ export const dividendsSlice = createSlice({
     addDividend: (state, action: PayloadAction<ItemWithCalcTax[]>) => {
       state.dividends = action.payload;
     },
-    removeDividend: (state, action: PayloadAction<number>) => {
-      state.count -= action.payload;
+    removeDividend: (state) => {
+      state.dividends = [];
     },
     editDividend: (state, action: PayloadAction<number>) => {
       state.count -= action.payload;

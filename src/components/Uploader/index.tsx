@@ -1,8 +1,9 @@
-import { Button, Upload } from "antd";
+import { Button, Upload, UploadProps, Alert } from "antd";
 import Papa from "papaparse";
 import { Item, ItemWithCalcTax } from "../types/type";
 import { dividendsSlice } from "../../redux/reducers/dividends";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { useState } from "react";
 
 export type Props = {
   onUpload: VoidFunction;
@@ -12,6 +13,7 @@ export const Uploader = ({ onUpload }: Props) => {
   const { addDividend } = dividendsSlice.actions;
   const { exchangeRates } = useAppSelector((state) => state.dividends);
   const dispatch = useAppDispatch();
+  const [err, setErr] = useState(false);
 
   const parser = (file: any) => {
     Papa.parse(file, {
@@ -92,7 +94,7 @@ export const Uploader = ({ onUpload }: Props) => {
     });
   };
 
-  const props = {
+  const props: UploadProps = {
     name: "file",
     action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
     headers: {
@@ -110,12 +112,30 @@ export const Uploader = ({ onUpload }: Props) => {
         console.error(`${info.file.name} file upload failed.`);
       }
     },
+    beforeUpload: (file) => {
+      const isCSV = file.type === "text/csv";
+      if (!isCSV) {
+        setErr(true);
+      }
+      return isCSV || Upload.LIST_IGNORE;
+    },
   };
 
-  // console.log("LOGG", data);
   return (
-    <Upload {...props}>
-      <Button>Загрузить отчёт</Button>
-    </Upload>
+    <>
+      <Upload {...props}>
+        <Button className={"upload-button"}>Загрузить отчёт</Button>
+      </Upload>
+      {err ? (
+        <Alert
+          message="Ошибка! Неверный формат файла!"
+          description="Загружайте только .CSV формат файла."
+          type="error"
+          showIcon
+          closeIcon
+          afterClose={() => setErr(false)}
+        />
+      ) : null}
+    </>
   );
 };

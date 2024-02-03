@@ -49,11 +49,6 @@ export const Table = ({ data }: Props) => {
       dataIndex: "taxMDL",
       key: "taxMDL",
     },
-    // {
-    //   title: "Comment",
-    //   dataIndex: "comment",
-    //   key: "comment",
-    // },
   ];
 
   return <AntTable columns={columns} dataSource={data} pagination={false} />;

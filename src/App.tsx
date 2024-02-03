@@ -2,15 +2,23 @@ import React, { useState } from "react";
 import "./App.css";
 import { Uploader } from "./components/Uploader";
 import { Table } from "./components/Table";
-import { useAppSelector } from "./hooks/redux";
-import { Typography, FloatButton } from "antd";
-import { QuestionCircleOutlined, SyncOutlined } from "@ant-design/icons";
+import { useAppDispatch, useAppSelector } from "./hooks/redux";
+import { Typography, Flex, Button } from "antd";
+import { FloatButtons } from "./components/FloatButtons";
+import { dividendsSlice } from "./redux/reducers/dividends";
 
 const { Title } = Typography;
 
 function App() {
+  const { removeDividend } = dividendsSlice.actions;
+  const dispatch = useAppDispatch();
   const [uploaded, setUploaded] = useState(false);
   const { dividends } = useAppSelector((state) => state.dividends);
+
+  const onReplay = () => {
+    dispatch(removeDividend());
+    setUploaded(false);
+  };
 
   const onUpload = () => {
     setUploaded(true);
@@ -18,16 +26,37 @@ function App() {
 
   return (
     <div className="App">
-      <Title>GUNYA INVEST x INVEST MOLDOVA</Title>
-      <Title level={3}>Калькулятор налога на дивиденды</Title>
-      {!uploaded ? <Uploader onUpload={onUpload} /> : null}
-      {uploaded ? <Table data={dividends} /> : null}
-      <FloatButton.Group shape="square" style={{ right: 94 }}>
-        <FloatButton icon={<QuestionCircleOutlined />} />
-        <FloatButton />
-        <FloatButton icon={<SyncOutlined />} />
-        <FloatButton.BackTop visibilityHeight={0} />
-      </FloatButton.Group>
+      {!uploaded ? (
+        <div className={"intro"}>
+          <Title className={"main-title"} color={"#fff"}>
+            GUNYA INVEST
+          </Title>
+          <Title level={3}>Калькулятор налога на дивиденды</Title>
+          <Flex gap={"middle"} vertical justify={"center"} align={"center"}>
+            <Uploader onUpload={onUpload} />
+          </Flex>
+        </div>
+      ) : null}
+
+      {uploaded ? (
+        <>
+          <Flex gap={"middle"} align={"center"} justify={"space-between"}>
+            <Title className={"main-title"} level={3}>
+              GUNYA INVEST
+            </Title>
+            <Title level={3}>Калькулятор налога на дивиденды</Title>
+          </Flex>
+          <Table data={dividends} />
+        </>
+      ) : null}
+      <FloatButtons />
+      <div className={"footer"}>
+        {uploaded ? (
+          <Button className={"upload-button"} onClick={onReplay}>
+            Начать заново!
+          </Button>
+        ) : null}
+      </div>
     </div>
   );
 }
