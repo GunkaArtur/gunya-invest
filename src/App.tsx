@@ -3,9 +3,21 @@ import "./App.css";
 import { Uploader } from "./components/Uploader";
 import { Table } from "./components/Table";
 import { useAppDispatch, useAppSelector } from "./hooks/redux";
-import { Typography, Flex, Button } from "antd";
+import {
+  Typography,
+  Flex,
+  Button,
+  Row,
+  Col,
+  Card,
+  Statistic,
+  Space,
+} from "antd";
 import { FloatButtons } from "./components/FloatButtons";
 import { dividendsSlice } from "./redux/reducers/dividends";
+import { ArrowDownOutlined, ArrowUpOutlined } from "@ant-design/icons";
+import { faMoneyBill1 } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const { Title } = Typography;
 
@@ -13,7 +25,9 @@ function App() {
   const { removeDividend } = dividendsSlice.actions;
   const dispatch = useAppDispatch();
   const [uploaded, setUploaded] = useState(false);
-  const { dividends } = useAppSelector((state) => state.dividends);
+  const { dividends, allCollectedDividends, allPayedTax } = useAppSelector(
+    (state) => state.dividends,
+  );
 
   const onReplay = () => {
     dispatch(removeDividend());
@@ -46,7 +60,34 @@ function App() {
             </Title>
             <Title level={3}>Калькулятор налога на дивиденды</Title>
           </Flex>
-          <Table data={dividends} />
+
+          <Space direction={"vertical"}>
+            <Row gutter={16}>
+              <Col span={12}>
+                <Card bordered={false}>
+                  <Statistic
+                    title="Всего полученно дивидендов"
+                    value={allCollectedDividends}
+                    precision={2}
+                    valueStyle={{ color: "#3f8600" }}
+                    suffix="MDL"
+                  />
+                </Card>
+              </Col>
+              <Col span={12}>
+                <Card bordered={false}>
+                  <Statistic
+                    title="Всего удержано налогов в США"
+                    value={allPayedTax}
+                    precision={2}
+                    valueStyle={{ color: "#cf1322" }}
+                    suffix="MDL"
+                  />
+                </Card>
+              </Col>
+            </Row>
+            <Table data={dividends} />
+          </Space>
         </>
       ) : null}
       <FloatButtons />
