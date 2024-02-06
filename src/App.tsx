@@ -15,9 +15,6 @@ import {
 } from "antd";
 import { FloatButtons } from "./components/FloatButtons";
 import { dividendsSlice } from "./redux/reducers/dividends";
-import { ArrowDownOutlined, ArrowUpOutlined } from "@ant-design/icons";
-import { faMoneyBill1 } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const { Title } = Typography;
 
