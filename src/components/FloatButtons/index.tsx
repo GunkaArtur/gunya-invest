@@ -49,7 +49,11 @@ export const FloatButtons = () => {
 
       <FloatButton
         icon={
-          <a href="https://t.me/gunyainvest" target="_blank">
+          <a
+            href="https://t.me/gunyainvest"
+            target="_blank"
+            rel={"noopener noreferrer"}
+          >
             <FontAwesomeIcon icon={faTelegram} color={"#2AABEE"} />
           </a>
         }
@@ -57,7 +61,11 @@ export const FloatButtons = () => {
 
       <FloatButton
         icon={
-          <a href="https://www.youtube.com/@gunyainvest" target="_blank">
+          <a
+            href="https://www.youtube.com/@gunyainvest"
+            target="_blank"
+            rel={"noopener noreferrer"}
+          >
             <FontAwesomeIcon icon={faYoutube} color={"#FF0000"} />
           </a>
         }
