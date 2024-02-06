@@ -46,8 +46,6 @@ export const Uploader = ({ onUpload }: Props) => {
           .slice(1)
           .slice(0, -1);
 
-        console.log("here");
-
         const taxes = result.data
           // @ts-ignore
           .filter((it) => it["Statement"] === "Withholding Tax")
@@ -81,8 +79,6 @@ export const Uploader = ({ onUpload }: Props) => {
             };
           });
 
-          console.log("parsedArr=", parsedArr);
-
           dispatch(addDividend(parsedArr));
           onUpload();
         } else {
@@ -103,7 +99,6 @@ export const Uploader = ({ onUpload }: Props) => {
     // @ts-ignore
     onChange(info) {
       if (info.file.status !== "uploading") {
-        console.log(info.file, info.fileList);
         parser(info.file.originFileObj);
       }
       if (info.file.status === "done") {
