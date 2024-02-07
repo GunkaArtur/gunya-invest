@@ -60,7 +60,7 @@ function App() {
 
           <Space direction={"vertical"}>
             <Row gutter={16}>
-              <Col span={12}>
+              <Col span={8}>
                 <Card bordered={false}>
                   <Statistic
                     title="Всего полученно дивидендов"
@@ -71,11 +71,22 @@ function App() {
                   />
                 </Card>
               </Col>
-              <Col span={12}>
+              <Col span={8}>
                 <Card bordered={false}>
                   <Statistic
                     title="Всего удержано налогов в США"
                     value={allPayedTax}
+                    precision={2}
+                    valueStyle={{ color: "#cf1322" }}
+                    suffix="MDL"
+                  />
+                </Card>
+              </Col>
+              <Col span={8}>
+                <Card bordered={false}>
+                  <Statistic
+                    title="Доплатить налогов осталось"
+                    value={allCollectedDividends * 0.12}
                     precision={2}
                     valueStyle={{ color: "#cf1322" }}
                     suffix="MDL"

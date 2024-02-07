@@ -6,6 +6,7 @@
 body {
   padding: 0;
   margin: 0;
+  height: 100vh;
   background: linear-gradient(109.6deg, rgb(20, 30, 48) 11.2%, rgb(36, 59, 85) 91.1%);
 }
 
@@ -24,7 +25,6 @@ body {
 }
 
 .intro {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -41,7 +41,6 @@ body {
 
 .footer {
   height: 50px;
-  width: 100%;
   padding: 30px;
   display: flex;
   justify-content: center;
