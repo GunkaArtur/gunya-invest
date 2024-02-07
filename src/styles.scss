@@ -1,0 +1,145 @@
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@font-face {
+  font-family: "AtomicMarker";
+  src: url("./fonts/AtomicMarker.otf");
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(
+    109.6deg,
+    rgb(20, 30, 48) 11.2%,
+    rgb(36, 59, 85) 91.1%
+  );
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .ant-flex {
+    height: 60vh;
+  }
+
+  .main-title {
+    font-size: 100px;
+  }
+}
+
+.main-title {
+  font-family: "AtomicMarker" !important;
+}
+.ant-typography {
+  color: #ffffff !important;
+}
+
+.upload-button {
+  height: 50px;
+  width: 200px;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+  &:before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-button-85 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+
+  &:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #222;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+}
+
+.ant-popover {
+  .popover-content {
+    max-width: 400px;
+  }
+  .ant-popover-title {
+    color: #ffffff;
+  }
+}
+
+.modal {
+  .ant-modal-content {
+    background-color: #111111;
+
+    .ant-modal-close {
+      color: #ffffff;
+    }
+    .ant-modal-header {
+      color: #ffffff;
+      background-color: #111111;
+
+      .ant-modal-title {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.footer {
+  height: 50px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
