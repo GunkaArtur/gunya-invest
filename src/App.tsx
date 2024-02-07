@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./styles.scss";
 import { Uploader } from "./components/Uploader";
 import { Table } from "./components/Table";
 import { useAppDispatch, useAppSelector } from "./hooks/redux";
