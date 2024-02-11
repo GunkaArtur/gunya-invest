@@ -41,6 +41,7 @@ export const Uploader = ({ onUpload }: Props) => {
               amount: Number(e[1]),
               company: e[0].match("^[^(]+")?.pop(),
               comment: e[0],
+              tax: 0,
             };
           })
           .slice(1)
@@ -72,7 +73,7 @@ export const Uploader = ({ onUpload }: Props) => {
 
             return {
               ...item,
-              tax: taxes[idx].amount,
+              tax: taxes[idx].amount ?? 0,
               netProfit: item.amount - taxes[idx].amount * -1,
               mdlAmount: exchange ? item.amount * exchange.usd : -1,
               taxMDL: exchange ? taxes[idx].amount * exchange.usd * -1 : -1,
@@ -82,8 +83,17 @@ export const Uploader = ({ onUpload }: Props) => {
           dispatch(addDividend(parsedArr));
           onUpload();
         } else {
-          // @ts-ignore
-          dispatch(addDividend(dividends));
+          const lastD = dividends.map((div) => {
+            const exchange = exchangeRates.find((it) => it.date === div.date);
+            return {
+              ...div,
+              netProfit: div.amount,
+              mdlAmount: exchange ? div.amount * exchange.usd : -1,
+              taxMDL: 0,
+            };
+          });
+
+          dispatch(addDividend(lastD));
           onUpload();
         }
       },
