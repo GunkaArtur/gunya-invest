@@ -1,6 +1,6 @@
 import { Button, Upload, UploadProps, Alert } from "antd";
 import Papa from "papaparse";
-import { Item, ItemWithCalcTax } from "../types/type";
+import { Item } from "../types/type";
 import { dividendsSlice } from "../../redux/reducers/dividends";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { useState } from "react";
