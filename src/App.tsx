@@ -45,6 +45,87 @@ function App() {
 
           <Title level={3}>Калькулятор налога на дивиденды</Title>
 
+          <Space direction={"vertical"}>
+            <Row justify={"center"}>
+              <Title level={3}>Смотрите мои видео на YouTube</Title>
+            </Row>
+            <Row gutter={[15, 15]}>
+              <Col>
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/iWmgj0ZU4n4?si=fHTETipgdBXMILoT"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </Col>
+              <Col>
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/VB-9kPGMd_8?si=XY2MXp4BLbUqQAcc"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </Col>
+              <Col>
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/S1bcHUMEqF4?si=qYVK5ffXEC-6IL6L"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </Col>
+            </Row>
+            <Row gutter={[15, 15]}>
+              <Col>
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/vnmNKPv83Mo?si=lJGkVlRoEVuugEeJ"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </Col>
+              <Col>
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/yO0FjhtemKI?si=TMdqwN763oOOOW23"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </Col>
+              <Col>
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/mgOY0oIosyg?si=Xd1Qwud0r07F_wFa"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </Col>
+            </Row>
+          </Space>
           <Flex gap={"middle"} vertical justify={"center"} align={"center"}>
             <Uploader onUpload={onUpload} />
           </Flex>
