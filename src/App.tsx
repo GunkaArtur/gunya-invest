@@ -42,7 +42,9 @@ function App() {
           <Title className={"main-title"} color={"#fff"}>
             GUNYA INVEST
           </Title>
+
           <Title level={3}>Калькулятор налога на дивиденды</Title>
+
           <Flex gap={"middle"} vertical justify={"center"} align={"center"}>
             <Uploader onUpload={onUpload} />
           </Flex>

@@ -89,40 +89,15 @@ export const Uploader = ({ onUpload }: Props) => {
             taxMDL: 0,
           };
         });
-        // console.log("HERE", newOne);
 
-        dispatch(addDividend(newOne));
-        onUpload();
+        const preetyArr = newOne.map(item => ({
+          ...item,
+          netProfit : Number(item.netProfit.toFixed(2)),
+          mdlAmount: Number(item.mdlAmount.toFixed(2)),
+          taxMDL: Number(item.taxMDL.toFixed(2))}));
 
-        // if (taxes.length === dividends.length) {
-        //   const parsedArr = dividends.map((item, idx): ItemWithCalcTax => {
-        //     const exchange = exchangeRates.find((it) => it.date === item.date);
-        //
-        //     return {
-        //       ...item,
-        //       tax: taxes[idx].amount ?? 0,
-        //       netProfit: item.amount - taxes[idx].amount * -1,
-        //       mdlAmount: exchange ? item.amount * exchange.usd : -1,
-        //       taxMDL: exchange ? taxes[idx].amount * exchange.usd * -1 : -1,
-        //     };
-        //   });
-        //
-        //   dispatch(addDividend(parsedArr));
-        //   onUpload();
-        // } else {
-        //   const lastD = dividends.map((div) => {
-        //     const exchange = exchangeRates.find((it) => it.date === div.date);
-        //     return {
-        //       ...div,
-        //       netProfit: div.amount,
-        //       mdlAmount: exchange ? div.amount * exchange.usd : -1,
-        //       taxMDL: 0,
-        //     };
-        //   });
-        //
-        //   dispatch(addDividend(lastD));
-        //   onUpload();
-        // }
+        dispatch(addDividend(preetyArr));
+        onUpload(); 
       },
     });
   };
