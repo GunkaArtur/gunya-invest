@@ -6,6 +6,7 @@ export interface Item {
   amount: number;
   tax?: number;
   netProfit?: number;
+  agentCommission?: number;
 }
 
 export interface ItemWithCalcTax extends Item {

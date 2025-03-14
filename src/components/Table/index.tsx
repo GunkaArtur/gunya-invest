@@ -25,6 +25,11 @@ export const Table = ({ data }: Props) => {
       key: "amount",
     },
     {
+      title: "Коммисия агента",
+      dataIndex: "agentCommission",
+      key: "agentCommission",
+    },
+    {
       title: "Удержанный налог",
       dataIndex: "tax",
       key: "tax",
