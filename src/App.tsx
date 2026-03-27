@@ -15,6 +15,7 @@ import {
 } from "antd";
 import { FloatButtons } from "./components/FloatButtons";
 import { dividendsSlice } from "./redux/reducers/dividends";
+import { UploaderFF } from "./components/Uploader/_FF/UploderFF";
 
 const { Title } = Typography;
 
@@ -128,6 +129,7 @@ function App() {
           </Space>
           <Flex gap={"middle"} vertical justify={"center"} align={"center"}>
             <Uploader onUpload={onUpload} />
+            <UploaderFF onUpload={onUpload} />
           </Flex>
         </div>
       ) : null}
